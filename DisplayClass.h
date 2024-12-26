@@ -96,12 +96,12 @@ public:
 	CellStruct * CurrentFoundationCopy_Data; // (note: limited to 50 [!] cells)
 	ObjectClass *CurrentBuildingCopy;
 	ObjectTypeClass *CurrentBuildingTypeCopy;
-	unsigned int CurrentBuildingOwnerArrayIndexCopy;
+	int CurrentBuildingOwnerArrayIndexCopy;
 	bool FollowObject;
 	ObjectClass* ObjectToFollow;
 	ObjectClass* CurrentBuilding;		//Building we're currently placing
 	ObjectTypeClass* CurrentBuildingType;	//Type of that building
-	unsigned int CurrentBuildingOwnerArrayIndex;
+	int CurrentBuildingOwnerArrayIndex;
 	bool RepairMode;
 	bool SellMode;
 	bool PowerToggleMode;
