@@ -203,6 +203,9 @@ public:
 	int DistanceFrom(AbstractClass *that) const
 		{ JMP_THIS(0x5F6440); }
 
+	int DistanceFrom3D(AbstractClass *that) const
+		{ JMP_THIS(0x5F6360); }
+
 	double GetHealthPercentage() const
 		{ return static_cast<double>(this->Health) / this->GetType()->Strength; }
 
