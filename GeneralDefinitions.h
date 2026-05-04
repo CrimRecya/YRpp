@@ -1654,6 +1654,7 @@ enum class WWKey : int
 	Release = 0x800,
 	VirtualKey = 0x1000,
 	DoubleClick = 0x2000,
+	RightClick = 0x4000,
 	Button = 0x8000,
 };
 

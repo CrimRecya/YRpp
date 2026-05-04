@@ -2,6 +2,7 @@
 
 #include <PowerClass.h>
 #include <StageClass.h>
+#include <ShapeButtonClass.h>
 
 class ColorScheme;
 class FactoryClass;
@@ -69,6 +70,7 @@ public:
 	DEFINE_REFERENCE(SidebarClass, Instance, 0x87F7E8u)
 
 	DEFINE_ARRAY_REFERENCE(wchar_t, [0x42u], TooltipBuffer, 0xB07BC4u)
+	DEFINE_ARRAY_REFERENCE(ShapeButtonClass, [4], TabButtons, 0xB07C48u)
 
 	void SidebarNeedsRepaint(int mode = 0) {
 		this->SidebarNeedsRedraw = true;
@@ -106,6 +108,12 @@ public:
 
 	bool Scroll(bool up, int column)
 		{ JMP_THIS(0x6A6A00); }
+
+	int SetTab(int tabIndex)
+		{ JMP_THIS(0x6A7590); }
+
+	void OnTechnoDestroyed(TechnoClass* pTechno)
+		{ JMP_THIS(0x6A5F20); }
 
 	int SetTab(int tabIndex)
 		{ JMP_THIS(0x6A7590); }
