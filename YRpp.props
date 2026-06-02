@@ -9,11 +9,13 @@
   <!-- Header files -->
   <ItemGroup>
     <!-- Blitters -->
+	<ClInclude Include="$(YRppDir)\Blitters\BlitPlain.h" />
     <ClInclude Include="$(YRppDir)\Blitters\BlitPlainXlat.h" />
     <ClInclude Include="$(YRppDir)\Blitters\BlitPlainXlatAlpha.h" />
     <ClInclude Include="$(YRppDir)\Blitters\BlitPlainXlatZRead.h" />
     <ClInclude Include="$(YRppDir)\Blitters\BlitPlainXlatZReadWrite.h" />
     <ClInclude Include="$(YRppDir)\Blitters\Blitter.h" />
+	<ClInclude Include="$(YRppDir)\Blitters\BlitTrans.h" />
     <ClInclude Include="$(YRppDir)\Blitters\BlitTransDarken.h" />
     <ClInclude Include="$(YRppDir)\Blitters\BlitTransDarkenZRead.h" />
     <ClInclude Include="$(YRppDir)\Blitters\BlitTransDarkenZReadWrite.h" />
@@ -166,6 +168,7 @@
     <ClInclude Include="$(YRppDir)\CopyProtection.h" />
     <ClInclude Include="$(YRppDir)\CRC.h" />
     <ClInclude Include="$(YRppDir)\CRT.h" />
+	<ClInclude Include="$(YRppDir)\Dictionary.h" />
     <ClInclude Include="$(YRppDir)\Dir.h" />
     <ClInclude Include="$(YRppDir)\DiscreteDistributionClass.h" />
     <ClInclude Include="$(YRppDir)\DiscreteSelectionClass.h" />
@@ -239,6 +242,7 @@
     <ClInclude Include="$(YRppDir)\ObjectTypeClass.h" />
     <ClInclude Include="$(YRppDir)\OverlayClass.h" />
     <ClInclude Include="$(YRppDir)\OverlayTypeClass.h" />
+    <ClInclude Include="$(YRppDir)\OwnerDraw.h" />
     <ClInclude Include="$(YRppDir)\PacketClass.h" />
     <ClInclude Include="$(YRppDir)\ParasiteClass.h" />
     <ClInclude Include="$(YRppDir)\ParticleClass.h" />
@@ -326,6 +330,7 @@
     <ClInclude Include="$(YRppDir)\VoxClass.h" />
     <ClInclude Include="$(YRppDir)\VoxelAnimClass.h" />
     <ClInclude Include="$(YRppDir)\VoxelAnimTypeClass.h" />
+    <ClInclude Include="$(YRppDir)\WalkLocomotionClass.h" />
     <ClInclude Include="$(YRppDir)\WarheadTypeClass.h" />
     <ClInclude Include="$(YRppDir)\WaveClass.h" />
     <ClInclude Include="$(YRppDir)\WaypointPathClass.h" />

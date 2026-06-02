@@ -67,10 +67,11 @@ class NOVTABLE SidebarClass : public PowerClass
 {
 public:
 	//Static
-	DEFINE_REFERENCE(SidebarClass, Instance, 0x87F7E8u)
+	DEFINE_REFERENCE(SidebarClass, Instance, 0x87F7E8u);
 
-	DEFINE_ARRAY_REFERENCE(wchar_t, [0x42u], TooltipBuffer, 0xB07BC4u)
-	DEFINE_ARRAY_REFERENCE(ShapeButtonClass, [4], TabButtons, 0xB07C48u)
+	DEFINE_ARRAY_REFERENCE(wchar_t, [0x42u], TooltipBuffer, 0xB07BC4u);
+	DEFINE_REFERENCE(ToggleClass, ToggleRepairButton, 0xB0B3A0);
+	DEFINE_ARRAY_REFERENCE(ShapeButtonClass, [4], TabButtons, 0xB07C48u);
 
 	void SidebarNeedsRepaint(int mode = 0) {
 		this->SidebarNeedsRedraw = true;
@@ -94,7 +95,7 @@ public:
 	virtual ~SidebarClass() RX;
 
 	//SidebarClass
-	virtual bool vt_entry_D8(int nUnknown) R0;
+	virtual bool Activate(int control) R0;
 
 	//Non-virtual
 
@@ -114,6 +115,12 @@ public:
 
 	int SetTab(int tabIndex)
 		{ JMP_THIS(0x6A7590); }
+
+	void OnTechnoDestroyed(TechnoClass* pTechno)
+		{ JMP_THIS(0x6A5F20); }
+
+	void BlitSidebar(bool force)
+		{ JMP_THIS(0x6A70E0); }
 
 protected:
 	//Constructor

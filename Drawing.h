@@ -11,6 +11,10 @@
 #include <Helpers/CompileTime.h>
 #include <Surface.h>
 
+class VoxLib;
+template<typename T>
+class Vector3D;
+
 #pragma pack(push, 1)
 class RGBClass
 {
@@ -126,6 +130,19 @@ public:
 	DEFINE_REFERENCE(int, BlueShiftLeft, 0x8A0DD8)
 	DEFINE_REFERENCE(int, BlueShiftRight, 0x8A0DDC)
 
+	DEFINE_REFERENCE(int, RenderWidth, 0x8A00A4)
+	DEFINE_REFERENCE(int, RenderHeight, 0x8A00A8)
+	DEFINE_REFERENCE(int, RenderBitsPerPixel, 0x8A00AC)
+
+	DEFINE_REFERENCE(short, HalfbrightMask, 0x8A0DE8)
+	DEFINE_REFERENCE(short, QuarterbrightMask, 0x8A0DEA)
+	DEFINE_REFERENCE(short, EighthbrightMask, 0x8A0DEC)
+
+	DEFINE_REFERENCE(bool, AllowSoftwareBlitFills, 0x8205D4)
+	DEFINE_REFERENCE(bool, AllowSoftwareBlitStretch, 0x8A0DEE)
+
+	DEFINE_REFERENCE(Matrix3D, VoxelTransformMatrix, 0x887430);
+
 	//TextBox dimensions for tooltip-style boxes
 	static RectangleStruct* __fastcall GetTextDimensions(
 		RectangleStruct* pOutBuffer, wchar_t const* pText, Point2D location,
@@ -174,6 +191,17 @@ public:
 		return buffer;
 	}
 
+	// Perform rectangle clipping in preparation for a blit.
+	static bool __fastcall BlitClip(RectangleStruct& drect, const RectangleStruct& dwindow, RectangleStruct& srect, const RectangleStruct& swindow)
+	{
+		JMP_STD(0x7BBE20);
+	}
+
+	static bool __fastcall BitBlit(Surface* dest, RectangleStruct* destrect, Surface* source, RectangleStruct* sourcerect, void* blitter, int z, ZGradient zgrad, int a, int tint)
+	{
+		JMP_STD(0x437350);
+	}
+
 	/*
 	static int __fastcall RGB_To_Int(int red, int green, int blue)
 	{ JMP_STD(0x4355D0); }
@@ -210,6 +238,28 @@ public:
 		ColorStruct ret;
 		Int_To_RGB(color, ret);
 		return ret;
+	}
+
+	static char __fastcall SetupVoxelDoubleLighting(
+		VoxLib* VXL,
+		int a2,
+		int a3,
+		Matrix3D* pA,
+		Matrix3D* pTransform,
+		Vector3D<float>* pLightSrc,
+		float fIntensity)
+	{
+		JMP_STD(0x753D00);
+	}
+
+	static char __fastcall SetupVoxelSingleLighting(
+		VoxLib* VXL,
+		int a2,
+		int a3,
+		Matrix3D* pMatrix,
+		Vector3D<float>* pLightSrc)
+	{
+		JMP_STD(0x753C80);
 	}
 };
 
