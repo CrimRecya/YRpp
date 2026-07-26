@@ -126,23 +126,14 @@ public:
 	void DestroyNthAnim(BuildingAnimSlot Slot)
 		{ JMP_THIS(0x451E40); }
 
-	void PlayNthAnim(BuildingAnimSlot Slot, int effectDelay = 0) {
-		bool Damaged = !this->IsGreenHP();
-		bool Garrisoned = this->GetOccupantCount() > 0;
+	// the game picks the slot's normal/damaged/garrisoned name from these two states
+	void PlayNthAnim(BuildingAnimSlot Slot, bool Damaged, bool Garrisoned, int effectDelay = 0)
+		{ JMP_THIS(0x451750); }
 
-		auto& AnimData = this->Type->GetBuildingAnim(Slot);
-		const char *AnimName = nullptr;
-		if(Damaged) {
-			AnimName = AnimData.Damaged;
-		} else if(Garrisoned) {
-			AnimName = AnimData.Garrisoned;
-		} else {
-			AnimName = AnimData.Anim;
-		}
-		if(AnimName && *AnimName) {
-			this->PlayAnim(AnimName, Slot, Damaged, Garrisoned, effectDelay);
-		}
-	}
+	// derives the two states the way the game's own callers do. mind that a bool
+	// passed here is an effectDelay, not a state -- use the four-argument form.
+	void PlayNthAnim(BuildingAnimSlot Slot, int effectDelay = 0)
+		{ this->PlayNthAnim(Slot, !this->IsGreenHP(), this->GetOccupantCount() > 0, effectDelay); }
 
 	void PlayAnim(const char* animName, BuildingAnimSlot Slot, bool Damaged, bool Garrisoned, int effectDelay = 0)
 		{ JMP_THIS(0x451890); }

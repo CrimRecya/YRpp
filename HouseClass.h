@@ -297,10 +297,19 @@ public:
 	void RespawnStartingForces()
 		{ JMP_THIS(0x50D440); }
 
+	// flags the house to be defeated once its borrowed time expires,
+	// unless it is already flagged to win, lose or die
+	bool FlagToDie()
+		{ JMP_THIS(0x4FC980); }
+
 	BYTE Win(bool bSavourSomething)
 		{ JMP_THIS(0x4FC9E0); }
 	BYTE Lose(bool bSavourSomething)
 		{ JMP_THIS(0x4FCBD0); }
+
+	// counts human-controlled houses other than this one that are not yet defeated
+	int CountOtherUndefeatedHumanHouses() const
+		{ JMP_THIS(0x5E2BA0); }
 
 	void RegisterJustBuilt(TechnoClass* pTechno)
 		{ JMP_THIS(0x4FB6B0); }
@@ -695,6 +704,16 @@ public:
 
 	FactoryClass* GetPrimaryFactory(AbstractType absID, bool naval, BuildCat buildCat) const
 		{ JMP_THIS(0x500510); }
+
+	// zone: 0 = core, 1 = north, 2 = east, 3 = south, 4 = west
+	CellStruct* PickRandomCellInZone(CellStruct& outBuffer, int zone) const
+		{ JMP_THIS(0x501AC0); }
+
+	CellStruct PickRandomCellInZone(int zone) const {
+		CellStruct outBuffer;
+		this->PickRandomCellInZone(outBuffer, zone);
+		return outBuffer;
+	}
 
 	void SetPrimaryFactory(FactoryClass* pFactory, AbstractType absID, bool naval, BuildCat buildCat)
 		{ JMP_THIS(0x500850); }
